@@ -9,7 +9,7 @@ src/utils/actionLogger.js
 src/utils/logger.js
 src/scripts/
 scripts/
-services/
+/services/
 app.yaml
 .gcloudignore
 package-backend.json
