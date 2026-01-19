@@ -4,7 +4,7 @@
  */
 
 import { useState, useEffect, useCallback } from 'react';
-import { fetchInsights, ApiClientError } from '../services/apiClient';
+import { fetchInsights, ApiClientError } from '../services/api';
 import type { SpendingInsight, CategorySpending } from '../types/dashboard';
 
 interface UseInsightsResult {

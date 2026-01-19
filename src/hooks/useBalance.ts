@@ -4,7 +4,7 @@
  */
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { fetchBalance, ApiClientError } from '../services/apiClient';
+import { fetchBalance, ApiClientError } from '../services/api';
 import type { BalanceResponse } from '../types/dashboard';
 
 const POLL_INTERVAL = 30000; // 30 seconds

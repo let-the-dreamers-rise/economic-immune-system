@@ -10,4 +10,4 @@ export {
   fetchInsights,
   pollTransactionStatus,
   ApiClientError
-} from './apiClient.js';
+} from './api.js';

@@ -4,7 +4,7 @@
  */
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { pollTransactionStatus, ApiClientError } from '../services/apiClient';
+import { pollTransactionStatus, ApiClientError } from '../services/api';
 import type { TransactionStatus, PayResponse } from '../types/dashboard';
 
 const POLL_INTERVAL = 5000; // 5 seconds

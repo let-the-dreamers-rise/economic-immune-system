@@ -4,7 +4,7 @@
  */
 
 import { useState, useEffect, useCallback } from 'react';
-import { fetchTransactions, ApiClientError } from '../services/apiClient';
+import { fetchTransactions, ApiClientError } from '../services/api';
 import type { TimelineEntry, TransactionsResponse } from '../types/dashboard';
 
 interface UseTransactionsResult {
