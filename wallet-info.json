@@ -1,0 +1,30 @@
+{
+  "walletSet": {
+    "id": "585151ae-e0d0-5347-9f52-fbc5b16679fa",
+    "name": "Agentic Finance Dashboard WalletSet",
+    "custodyType": "DEVELOPER",
+    "createDate": "2026-01-17T17:08:02Z"
+  },
+  "wallets": [
+    {
+      "id": "4bfac53b-550d-5059-bbb3-9c7ba13b5be1",
+      "address": "0x6a485cf0a928ed2a8090bd91fa9f01bda56a3333",
+      "blockchain": "MATIC-AMOY",
+      "accountType": "SCA",
+      "state": "LIVE",
+      "walletSetId": "585151ae-e0d0-5347-9f52-fbc5b16679fa",
+      "createDate": "2026-01-17T17:08:03Z",
+      "purpose": "Primary agent wallet for AI-powered transactions"
+    },
+    {
+      "id": "0f43a141-83f1-5a9e-b13e-efd4518cb74f",
+      "address": "0xc7f3ba92fdb5541fc4eec5521f009c61dc5f6021",
+      "blockchain": "MATIC-AMOY",
+      "accountType": "SCA",
+      "state": "LIVE",
+      "walletSetId": "585151ae-e0d0-5347-9f52-fbc5b16679fa",
+      "createDate": "2026-01-17T17:08:03Z",
+      "purpose": "Secondary wallet for testing transfers"
+    }
+  ]
+}

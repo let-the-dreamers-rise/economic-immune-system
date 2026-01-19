@@ -1,0 +1,22 @@
+{
+  "name": "agentic-finance-backend",
+  "version": "1.0.0",
+  "description": "Agentic Finance Dashboard Backend API",
+  "main": "src/backend/index.ts",
+  "scripts": {
+    "start": "tsx src/backend/index.ts",
+    "build": "echo 'No build step needed for tsx runtime'",
+    "postinstall": "echo 'Backend dependencies installed'"
+  },
+  "dependencies": {
+    "@circle-fin/developer-controlled-wallets": "^9.2.0",
+    "@google/genai": "^1.37.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "tsx": "^4.19.2"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

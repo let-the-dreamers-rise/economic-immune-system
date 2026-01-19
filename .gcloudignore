@@ -1,0 +1,65 @@
+# This file specifies files that are *not* uploaded to Google Cloud
+# using gcloud. It follows the same syntax as .gitignore, with the addition of
+# "#!include" directives (which insert the entries of the given .gitignore-style
+# file at that point).
+
+# Node.js dependencies:
+node_modules/
+
+# Frontend-specific source files (exclude frontend, keep backend)
+src/components/
+src/hooks/
+src/pages/
+src/lib/
+src/main.tsx
+src/index.css
+
+# Development files
+.env.local
+.env.development
+*.log
+coverage/
+.nyc_output/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git files
+.git/
+.gitignore
+
+# Test files
+**/*.test.js
+**/*.test.ts
+**/__tests__/
+
+# Documentation
+*.md
+!README.md
+
+# Config files not needed in production
+vite.config.ts
+vitest.config.ts
+tailwind.config.js
+postcss.config.js
+tsconfig.json
+tsconfig.node.json
+
+# Frontend files (we're only deploying backend)
+index.html
+public/
+components/
+dist/
+
+# Kiro IDE files
+.kiro/
+
+# Scripts not needed in production
+scripts/

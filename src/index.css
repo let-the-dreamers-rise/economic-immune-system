@@ -1,0 +1,86 @@
+/*
+ * AGENTIC FINANCE DASHBOARD - PREMIUM DARK THEME
+ * 
+ * A financial control room aesthetic for autonomous AI agents.
+ * Dark mode, high contrast, professional typography.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Premium Dark Theme - Financial Control Room */
+    --background: 222 47% 6%;      /* #0f172a - slate-950 */
+    --foreground: 210 40% 98%;     /* #f8fafc - slate-50 */
+    
+    /* Card surfaces */
+    --card: 222 47% 11%;           /* #1e293b - slate-800 */
+    --card-foreground: 210 40% 98%;
+    
+    /* Primary action color - Emerald */
+    --primary: 160 84% 39%;        /* #10b981 - emerald-500 */
+    --primary-foreground: 0 0% 100%;
+    
+    /* Secondary/muted elements */
+    --secondary: 217 33% 17%;      /* #334155 - slate-700 */
+    --secondary-foreground: 215 20% 65%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    
+    /* Accent - Emerald glow */
+    --accent: 160 84% 39%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* Semantic colors */
+    --destructive: 0 84% 60%;      /* rose-500 */
+    --destructive-foreground: 0 0% 100%;
+    --success: 160 84% 39%;        /* emerald-500 */
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;         /* amber-500 */
+    --warning-foreground: 0 0% 0%;
+    
+    /* Borders and inputs */
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 160 84% 39%;
+    
+    /* Border radius */
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+  
+  /* Mono font for numbers */
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Glow effects */
+  .glow-emerald {
+    text-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+  }
+  
+  .glow-amber {
+    text-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+  }
+  
+  .glow-rose {
+    text-shadow: 0 0 20px rgba(244, 63, 94, 0.5);
+  }
+}
