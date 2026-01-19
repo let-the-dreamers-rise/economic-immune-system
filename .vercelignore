@@ -1,0 +1,25 @@
+# Backend files (for frontend-only deployment)
+src/backend/
+src/routes/
+src/server.js
+src/services/paymentService.js
+src/services/policyService.js
+src/services/walletService.js
+src/utils/actionLogger.js
+src/utils/logger.js
+src/scripts/
+scripts/
+services/
+app.yaml
+.gcloudignore
+package-backend.json
+tsconfig.backend.json
+deploy.bat
+deploy.sh
+
+# Kiro IDE files
+.kiro/
+
+# Environment files
+.env
+.env.local

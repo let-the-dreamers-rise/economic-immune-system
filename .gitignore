@@ -33,6 +33,3 @@ circle-recovery.dat
 
 # Recovery files
 recovery_file_*.dat
-
-# Package files
-package-frontend.json
