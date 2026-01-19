@@ -11,7 +11,7 @@ import { ExplainabilityDrawer } from './ExplainabilityDrawer';
 import { PaymentProposalForm } from './PaymentProposalForm';
 import ImmuneStatusWidget from './ImmuneStatusWidget';
 import { useBalance, useTransactions, useInsights, useTransactionStatus, useImmuneStatus } from '../../hooks';
-import { evaluateProposal, executePayment } from '../../services/apiClient.js';
+import { evaluateProposal, executePayment } from '../../services';
 import type { TimelineEntry, EconomicDecision, PaymentProposal } from '../../types/dashboard';
 
 interface ConnectionStatusProps {
