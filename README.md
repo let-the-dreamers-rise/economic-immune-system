@@ -32,7 +32,7 @@ The system consists of three intelligence layers:
 
 ### Tech Stack
 
-*   **AI**: Google Gemini 1.5 Pro
+*   **AI**: Google Gemini 2.5 Pro
 *   **Blockchain**: Arc Testnet
 *   **Wallet**: Circle Developer Controlled Wallets SDK
 *   **Backend**: Node.js / Express / TypeScript
