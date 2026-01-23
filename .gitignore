@@ -25,11 +25,14 @@ dist-ssr
 
 # Kiro IDE files
 .kiro/
+.gemini/
 
 # Circle Security Files
 .env
 .env.local
 circle-recovery.dat
-
-# Recovery files
+app.yaml
+app.yml
+*.key
+*.pem
 recovery_file_*.dat

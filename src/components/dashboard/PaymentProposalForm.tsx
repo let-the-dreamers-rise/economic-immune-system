@@ -101,7 +101,7 @@ export function PaymentProposalForm({
     onDismiss();
   };
 
-  const canAuthorize = currentDecision && 
+  const canAuthorize = currentDecision &&
     (currentDecision.recommendation === 'approve' || currentDecision.recommendation === 'modify');
 
   // Show transaction result
@@ -267,7 +267,7 @@ export function PaymentProposalForm({
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
             placeholder="0.00"
-            step="0.01"
+            step="0.000001"
             min="0"
             disabled={isEvaluating}
             className={`

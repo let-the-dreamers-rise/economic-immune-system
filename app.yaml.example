@@ -1,0 +1,42 @@
+runtime: nodejs20
+
+env_variables:
+  # Gemini AI Configuration
+  API_KEY: "YOUR_GEMINI_API_KEY"
+  GEMINI_API_KEY: "YOUR_GEMINI_API_KEY"
+  USE_GEMINI: "true"
+  
+  # Circle Wallet Configuration
+  # Get these from https://console.circle.com
+  CIRCLE_API_KEY: "YOUR_CIRCLE_API_KEY"
+  CIRCLE_ENTITY_SECRET: "YOUR_ENTITY_SECRET"
+  
+  # Wallet IDs (Generated via scripts/create-arc-wallet.js)
+  AGENT_WALLET_ID: "YOUR_WALLET_ID"
+  AGENT_WALLET_ADDRESS: "YOUR_WALLET_ADDRESS"
+  SECONDARY_WALLET_ID: "YOUR_SECONDARY_WALLET_ID"
+  SECONDARY_WALLET_ADDRESS: "YOUR_SECONDARY_WALLET_ADDRESS"
+  WALLET_SET_ID: "YOUR_WALLET_SET_ID"
+  
+  # Set to "true" for real transactions, "false" for simulation
+  USE_CIRCLE: "true"
+  
+  # Server Configuration
+  PORT: "8080"
+  NODE_ENV: "production"
+  
+  # Policy Configuration
+  MAX_TRANSACTION_AMOUNT_USDC: "100"
+  DAILY_SPENDING_LIMIT_USDC: "1000"
+  WEEKLY_BUDGET_USDC: "1000"
+  MONTHLY_BUDGET_USDC: "5000"
+
+automatic_scaling:
+  min_instances: 1
+  max_instances: 10
+  target_cpu_utilization: 0.6
+
+handlers:
+- url: /.*
+  script: auto
+  secure: always

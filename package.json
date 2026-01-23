@@ -4,21 +4,30 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "tsx src/backend/index.ts",
     "dev": "vite",
-    "build": "vite build",
+    "build": "echo 'Build skipped - using tsx runtime'",
+    "gcp-build": "echo 'No build step needed - using tsx runtime'",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@circle-fin/developer-controlled-wallets": "^9.2.0",
+    "@google/genai": "^1.37.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
     "lucide-react": "^0.562.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "recharts": "^3.6.0",
-    "tailwind-merge": "^3.4.0"
+    "tailwind-merge": "^3.4.0",
+    "tsx": "^4.19.2",
+    "winston": "^3.17.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.2",

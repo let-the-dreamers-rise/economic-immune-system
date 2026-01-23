@@ -22,7 +22,7 @@ let simulatedBalance = 5000;
 export async function getWalletBalance(): Promise<number> {
   // Check if we should use the real Circle SDK
   const useRealCircle = process.env.CIRCLE_API_KEY && process.env.USE_CIRCLE === 'true';
-  
+
   if (useRealCircle) {
     try {
       // Dynamic import to avoid issues when Circle SDK is not configured
@@ -34,7 +34,7 @@ export async function getWalletBalance(): Promise<number> {
       // Fall through to simulation
     }
   }
-  
+
   return simulatedBalance;
 }
 
@@ -60,10 +60,10 @@ export function calculatePredictedSpend(): number {
   const pendingTransactions = transactions.filter(
     tx => tx.status === 'pending' || tx.status === 'confirming'
   );
-  
+
   // Sum of pending transaction amounts
   const pendingAmount = pendingTransactions.reduce((sum, tx) => sum + tx.amount, 0);
-  
+
   // Add a small buffer based on historical average (simplified)
   const completedToday = transactions.filter(
     tx => tx.status === 'completed' && isToday(new Date(tx.timestamp))
@@ -71,7 +71,7 @@ export function calculatePredictedSpend(): number {
   const avgTransactionSize = completedToday.length > 0
     ? completedToday.reduce((sum, tx) => sum + tx.amount, 0) / completedToday.length
     : 0;
-  
+
   // Predict 2 more transactions at average size
   return pendingAmount + (avgTransactionSize * 2);
 }
@@ -95,12 +95,12 @@ export async function getBalanceResponse(): Promise<BalanceResponse> {
   const balance = await getWalletBalance();
   const transactions = dataStore.getAllTransactions();
   const budgetConfig = dataStore.getBudgetConfig();
-  
+
   const todaySpend = calculateTodaySpend(transactions);
   const weeklySpend = calculateWeeklySpend(transactions);
   const monthlySpend = calculateMonthlySpend(transactions);
   const predictedSpend = calculatePredictedSpend();
-  
+
   return {
     balance,
     currency: 'USDC',
@@ -121,7 +121,7 @@ export async function getBalanceResponse(): Promise<BalanceResponse> {
 export async function hasSufficientBalance(amount: number): Promise<boolean> {
   const balance = await getWalletBalance();
   const budgetConfig = dataStore.getBudgetConfig();
-  
+
   // Must have enough balance and maintain reserve minimum
   return balance - amount >= budgetConfig.reserveMinimum;
 }

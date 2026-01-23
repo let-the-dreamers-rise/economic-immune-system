@@ -63,7 +63,7 @@ class DataStore {
   updateTransaction(id: string, updates: Partial<Transaction>): Transaction | undefined {
     const existing = this.transactions.get(id);
     if (!existing) return undefined;
-    
+
     const updated = { ...existing, ...updates };
     this.transactions.set(id, updated);
     return { ...updated };
@@ -132,9 +132,9 @@ class DataStore {
     return {
       id: transaction.id,
       timestamp: transaction.timestamp,
-      type: transaction.status === 'completed' ? 'completion' : 
-            transaction.status === 'failed' ? 'completion' :
-            transaction.txHash ? 'execution' : 'decision',
+      type: transaction.status === 'completed' ? 'completion' :
+        transaction.status === 'failed' ? 'completion' :
+          transaction.txHash ? 'execution' : 'decision',
       request: {
         recipient: transaction.recipient,
         amount: transaction.amount,

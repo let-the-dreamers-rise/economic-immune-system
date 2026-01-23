@@ -97,11 +97,17 @@ export function getBudgetImpactColor(impact: EconomicDecision['budget_impact']):
  * @returns Formatted currency string (e.g., "$1,234.56")
  */
 export function formatCurrency(amount: number, decimals: number = 2): string {
+  // For very small amounts (less than 0.01), show more decimals to avoid showing $0.00
+  let actualDecimals = decimals;
+  if (amount > 0 && amount < 0.01) {
+    actualDecimals = 6; // Show up to 6 decimals for tiny amounts
+  }
+
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
-    minimumFractionDigits: decimals,
-    maximumFractionDigits: decimals,
+    minimumFractionDigits: actualDecimals,
+    maximumFractionDigits: actualDecimals,
   }).format(amount);
 }
 

@@ -3,6 +3,7 @@ import { logger } from '../utils/logger.js'
 
 /**
  * Get USDC balance for the agent wallet
+ * Fetches from Circle SDK first, falls back to on-chain query if needed
  * @returns {Promise<Object>} Balance information
  */
 export async function getBalance() {
@@ -17,12 +18,36 @@ export async function getBalance() {
       id: WALLET_CONFIG.walletId,
     })
 
-    // Find USDC token balance
-    const usdcBalance = response.data?.tokenBalances?.find(
-      token => token.token?.symbol === 'USDC'
+    // Debug: Log full response to see what Circle returns
+    logger.info('Circle SDK raw response', {
+      tokenBalances: JSON.stringify(response.data?.tokenBalances),
+      fullData: JSON.stringify(response.data)
+    })
+
+    // Get all token balances
+    const tokenBalances = response.data?.tokenBalances || []
+
+    // Find USDC token balance - check for symbol or native token
+    let usdcBalance = tokenBalances.find(
+      token => token.token?.symbol === 'USDC' || token.token?.symbol === 'USDC-TESTNET' || token.token?.name?.includes('USD Coin')
     )
 
-    if (!usdcBalance) {
+    // If exact USDC matches not found, fallback to the first available token (often the case in testnets)
+    if (!usdcBalance && tokenBalances.length > 0) {
+      usdcBalance = tokenBalances[0];
+      logger.info('Using fallback token as USDC', { symbol: usdcBalance.token?.symbol });
+    }
+
+    // Calculate total balance safely (using parseFloat instead of BigInt for durability against decimals)
+    let totalBalance = '0'
+    if (tokenBalances.length > 0) {
+      const totalRaw = tokenBalances.reduce((sum, token) => {
+        return sum + parseFloat(token.amount || '0')
+      }, 0)
+      totalBalance = (totalRaw / 1_000_000).toFixed(9)
+    }
+
+    if (!usdcBalance && tokenBalances.length === 0) {
       logger.warn('No USDC balance found for wallet')
       return {
         balance: '0.00',
@@ -32,17 +57,20 @@ export async function getBalance() {
       }
     }
 
-    const balanceRaw = usdcBalance.amount || '0'
-    const balance = (parseFloat(balanceRaw) / 1_000_000).toFixed(2)
+    // Use USDC balance if found, otherwise use the calculated total
+    const balanceRaw = usdcBalance?.amount || '0'
+    const balance = usdcBalance
+      ? (parseFloat(balanceRaw) / 1_000_000).toFixed(9)
+      : totalBalance
 
-    logger.info('Balance retrieved successfully', { balance, balanceRaw })
+    logger.info('Balance retrieved successfully', { balance, balanceRaw, totalBalance })
 
     return {
       balance,
       balanceRaw,
       currency: 'USDC',
       blockchain: ARC_CONFIG.blockchain,
-      tokenId: usdcBalance.token?.id,
+      tokenId: usdcBalance?.token?.id,
     }
   } catch (error) {
     logger.error('Error fetching balance:', error)
